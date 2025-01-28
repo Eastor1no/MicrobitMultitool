@@ -1,0 +1,117 @@
+JAVASCRIPT
+let _1st_number = 0
+let _2nd_number = 0
+input.onPinPressed(TouchPin.P0, function () {
+    soundLevel()
+})
+function Compass () {
+    basic.showString("" + input.compassHeading() + "")
+    basic.pause(500)
+    basic.clearScreen()
+}
+function soundLevel () {
+    basic.showNumber(input.soundLevel())
+    basic.pause(500)
+    basic.clearScreen()
+}
+input.onButtonPressed(Button.A, function () {
+    _1st_number += 1
+    basic.clearScreen()
+    basic.showNumber(_1st_number)
+    basic.pause(200)
+    basic.clearScreen()
+})
+function giveAnswer () {
+    basic.clearScreen()
+    basic.showNumber(_1st_number + _2nd_number)
+    basic.pause(1000)
+    basic.clearScreen()
+    _1st_number = 0
+    _2nd_number = 0
+}
+input.onButtonPressed(Button.AB, function () {
+    if (_1st_number + _2nd_number > 0) {
+        giveAnswer()
+    }
+})
+input.onButtonPressed(Button.B, function () {
+    _2nd_number += 1
+    basic.clearScreen()
+    basic.showNumber(_2nd_number)
+    basic.pause(200)
+    basic.clearScreen()
+})
+input.onPinPressed(TouchPin.P1, function () {
+    Compass()
+})
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+    Temperature()
+})
+function Temperature () {
+    basic.showString("" + input.temperature() + "°C")
+    basic.pause(200)
+    basic.clearScreen()
+}
+
+PYTHON
+
+_1st_number = 0
+_2nd_number = 0
+
+def on_pin_pressed_p0():
+    soundLevel()
+input.on_pin_pressed(TouchPin.P0, on_pin_pressed_p0)
+
+def Compass():
+    basic.show_string("" + str(input.compass_heading()) + "")
+    basic.pause(500)
+    basic.clear_screen()
+def soundLevel():
+    basic.show_number(input.sound_level())
+    basic.pause(500)
+    basic.clear_screen()
+
+def on_button_pressed_a():
+    global _1st_number
+    _1st_number += 1
+    basic.clear_screen()
+    basic.show_number(_1st_number)
+    basic.pause(200)
+    basic.clear_screen()
+input.on_button_pressed(Button.A, on_button_pressed_a)
+
+def giveAnswer():
+    global _1st_number, _2nd_number
+    basic.clear_screen()
+    basic.show_number(_1st_number + _2nd_number)
+    basic.pause(1000)
+    basic.clear_screen()
+    _1st_number = 0
+    _2nd_number = 0
+
+def on_button_pressed_ab():
+    if _1st_number + _2nd_number > 0:
+        giveAnswer()
+input.on_button_pressed(Button.AB, on_button_pressed_ab)
+
+def on_button_pressed_b():
+    global _2nd_number
+    _2nd_number += 1
+    basic.clear_screen()
+    basic.show_number(_2nd_number)
+    basic.pause(200)
+    basic.clear_screen()
+input.on_button_pressed(Button.B, on_button_pressed_b)
+
+def on_pin_pressed_p1():
+    Compass()
+input.on_pin_pressed(TouchPin.P1, on_pin_pressed_p1)
+
+def on_logo_pressed():
+    Temperature()
+input.on_logo_event(TouchButtonEvent.PRESSED, on_logo_pressed)
+
+def Temperature():
+    basic.show_string("" + str(input.temperature()) + "°C")
+    basic.pause(200)
+    basic.clear_screen()
