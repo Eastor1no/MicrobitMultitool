@@ -8,6 +8,7 @@ Controls:
   Press Logo for temperature (in Celsius)
 
   Press 0+GND for Compass
+
 Calculator Controls:
 
   Whenever, press A to input 1st number, if you keep tapping A, the 1st number will go up by one.
@@ -20,6 +21,7 @@ Calculator Controls:
 There might be bugs!!!
 
 Install instructions
+
 .Hex file
 
   Step 1. Plug your Microbit into your computer.
